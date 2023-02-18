@@ -1,6 +1,8 @@
 #
 #  2023/02/14 - cp - The VIOS spin(s) of this patch - matching IJ44559 for AIX.
 #
+#  2023/02/17 - cp - Fixed the reference to the aix_ifix hash value
+#
 #-------------------------------------------------------------------------------
 #
 #  From Advisory.asc:
@@ -99,7 +101,7 @@ class aix_ifix_ij42162 {
             if (($ifixSuffix != 'unknown') and ($ifixBuildDate != 'unknown')) {
 
                 #  Don't bother with this if it's already showing up installed
-                unless ($ifixFullName in $::facts['aix_ifix'].keys) {
+                unless ($ifixFullName in $::facts['aix_ifix']['hash'].keys) {
  
                     #  Build up the complete name of the ifix staging source and target
                     $ifixStagingSource = "puppet:///modules/profile/${ifixName}${ifixSuffix}.${ifixBuildDate}.epkg.Z"
